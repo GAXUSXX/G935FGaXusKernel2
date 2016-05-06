@@ -54,7 +54,6 @@
 #include "muic_debug.h"
 #include "muic_dt.h"
 #include "muic_regmap.h"
-#include "muic_coagent.h"
 
 #if defined(CONFIG_MUIC_HV)
 #include "muic_hv.h"
@@ -63,10 +62,6 @@
 
 #if defined(CONFIG_MUIC_SUPPORT_CCIC)
 #include "muic_ccic.h"
-#endif
-
-#if defined(CONFIG_USB_EXTERNAL_NOTIFY)
-#include "muic_usb.h"
 #endif
 
 #define MUIC_INT_DETACH_MASK	(0x1 << 1)
@@ -223,7 +218,7 @@ void muic_set_hmt_status(int status)
 		muic_send_dock_intent(MUIC_DOCK_ABNORMAL);
 }
 
-static int muic_get_hmt_status(void)
+int muic_get_hmt_status(void)
 {
 	return muic_hmt_status;
 }
@@ -450,7 +445,7 @@ static int muic_probe(struct platform_device *pdev)
 	pmuic->is_factory_start = false;
 	pmuic->is_otg_test = false;
 	pmuic->attached_dev = ATTACHED_DEV_UNKNOWN_MUIC;
-	pmuic->is_gamepad = false;
+	pmuic->is_usb_ready = false;
 
 	if(!strcmp(pmuic->chip_name,"max,max77854"))
 		pmuic->vps_table = VPS_TYPE_TABLE;
@@ -538,8 +533,6 @@ static int muic_probe(struct platform_device *pdev)
 	hv_configure_AFC(pmuic->phv);
 #endif
 
-	coagent_update_ctx(pmuic);
-
 	muic_irq_init(pmuic);
 
 	/* initial cable detection */
@@ -568,9 +561,6 @@ static int muic_probe(struct platform_device *pdev)
 		pr_info("%s: OPMODE_MUIC. CCIC is not used.\n", __func__);
 #endif
 
-#if defined(CONFIG_USB_EXTERNAL_NOTIFY)
-	muic_register_usb_notifier(pmuic);
-#endif
 	muic_online =  true;
 
 	return 0;
@@ -608,9 +598,6 @@ static int __devexit muic_remove(struct platform_device *pdev)
 		if (pmuic->pdata->cleanup_switch_dev_cb)
 			pmuic->pdata->cleanup_switch_dev_cb();
 
-#if defined(CONFIG_USB_EXTERNAL_NOTIFY)
-		muic_unregister_usb_notifier(pmuic);
-#endif
 		mutex_destroy(&pmuic->muic_mutex);
 		i2c_set_clientdata(pmuic->i2c, NULL);
 		kfree(pmuic);

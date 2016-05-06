@@ -108,7 +108,7 @@ main:
 // 0 "" 2
 // 47 "arch/arm64/kernel/asm-offsets.c" 1
 	
-->THREAD_CPU_CONTEXT 1568 offsetof(struct task_struct, thread.cpu_context)	//
+->THREAD_CPU_CONTEXT 1552 offsetof(struct task_struct, thread.cpu_context)	//
 // 0 "" 2
 // 48 "arch/arm64/kernel/asm-offsets.c" 1
 	

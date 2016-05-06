@@ -130,9 +130,7 @@ static int max77854_get_vbus_state(struct max77854_charger_data *charger)
 		charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS_ETX ||
 		charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND)
+		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA)
 		reg_data = ((reg_data & MAX77854_WCIN_DTLS) >>
 			    MAX77854_WCIN_DTLS_SHIFT);
 	else
@@ -327,9 +325,7 @@ static int max77854_get_charging_health(struct max77854_charger_data *charger)
 				charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 				charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 				retry_cnt = 0;
 				do {
 					msleep(50);
@@ -348,9 +344,7 @@ static int max77854_get_charging_health(struct max77854_charger_data *charger)
 			 		charger->cable_type != POWER_SUPPLY_TYPE_HV_WIRELESS &&
 					charger->cable_type != POWER_SUPPLY_TYPE_PMA_WIRELESS &&
 					charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK &&
-					charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA &&
-					charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_STAND && 
-					charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_HV_STAND)) {
+					charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA)) {
 			pr_info("%s: vbus is under\n", __func__);
 			state = POWER_SUPPLY_HEALTH_UNDERVOLTAGE;
 		} else if ((value.intval == POWER_SUPPLY_HEALTH_UNDERVOLTAGE) && \
@@ -359,9 +353,7 @@ static int max77854_get_charging_health(struct max77854_charger_data *charger)
 				charger->cable_type != POWER_SUPPLY_TYPE_HV_WIRELESS &&
 				charger->cable_type != POWER_SUPPLY_TYPE_PMA_WIRELESS &&
 				charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK &&
-				charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA &&
-				charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_STAND &&
-				charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_HV_STAND)) {
+				charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA)) {
 			pr_info("%s: keep under-voltage\n", __func__);
 			state = POWER_SUPPLY_HEALTH_UNDERVOLTAGE;
 		}
@@ -432,9 +424,7 @@ static int max77854_get_input_current(struct max77854_charger_data *charger)
 		charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND)
+		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA)
 		return max77854_get_input_current_type(charger, POWER_SUPPLY_TYPE_WIRELESS);
 	else
 		return max77854_get_input_current_type(charger, POWER_SUPPLY_TYPE_MAINS);
@@ -449,9 +439,7 @@ static void reduce_input_current(struct max77854_charger_data *charger, int cur)
 		charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 		set_reg = MAX77854_CHG_REG_CNFG_10;
 		input_curr_limit_step = 30;
 	} else {
@@ -520,9 +508,7 @@ static void max77854_change_charge_path(struct max77854_charger_data *charger,
 		path == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 		path == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 		path == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-		path == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-		path == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-		path == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+		path == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 		cnfg12 = (0 << CHG_CNFG_12_CHGINSEL_SHIFT);
 	} else {
 		cnfg12 = (1 << CHG_CNFG_12_CHGINSEL_SHIFT);
@@ -544,9 +530,7 @@ static void max77854_set_input_current(struct max77854_charger_data *charger,
 		charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 		set_reg = MAX77854_CHG_REG_CNFG_10;
 		max77854_read_reg(charger->i2c,
 				  set_reg, &reg_data);
@@ -565,9 +549,7 @@ static void max77854_set_input_current(struct max77854_charger_data *charger,
 			charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 			charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 
 		input_current = (input_current > 1890) ? 1890 : input_current;
 		quotient = input_current / 30;
@@ -895,9 +877,7 @@ static int max77854_chg_get_property(struct power_supply *psy,
 			val->intval == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 			val->intval == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 			val->intval == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-			val->intval == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-			val->intval == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-			val->intval == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND)
+			val->intval == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA)
 			val->intval = max77854_get_input_current_type(charger, POWER_SUPPLY_TYPE_WIRELESS);
 		else
 			val->intval = max77854_get_input_current_type(charger, POWER_SUPPLY_TYPE_MAINS);
@@ -1030,9 +1010,7 @@ static int max77854_chg_set_property(struct power_supply *psy,
 				charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 				charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 				max77854_set_wireless_input_current(charger, input_current);
 			} else {
 				max77854_set_input_current(charger, input_current);
@@ -1052,9 +1030,7 @@ static int max77854_chg_set_property(struct power_supply *psy,
 			charger->cable_type != POWER_SUPPLY_TYPE_HV_WIRELESS &&
 			charger->cable_type != POWER_SUPPLY_TYPE_PMA_WIRELESS &&
 			charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK &&
-			charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA &&
-			charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_STAND &&
-			charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+			charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 			max77854_set_charge_current(charger, charger->charging_current);
 		}
 		break;
@@ -1230,9 +1206,7 @@ static int max77854_otg_set_property(struct power_supply *psy,
 		/* CHGIN-OTG */
 		if (val->intval) {
 			if (charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS ||
-				charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-				charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+				charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS) {
 				pr_info("%s: OTG enabled on HV_WC, set 5V", __func__);
 				value.intval = WIRELESS_VOUT_5V;
 				psy_do_property(charger->pdata->wireless_charger_name, set,
@@ -1421,9 +1395,7 @@ static void wpc_detect_work(struct work_struct *work)
 		charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_PMA_WIRELESS ||
 		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND ||
-		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+		charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 		u8 reg_data, wcin_state, wcin_dtls, wcin_cnt = 0;
 		do {
 			wcin_cnt++;
@@ -1566,9 +1538,7 @@ static void max77854_aicl_isr_work(struct work_struct *work)
 		charger->cable_type != POWER_SUPPLY_TYPE_HV_WIRELESS &&
 		charger->cable_type != POWER_SUPPLY_TYPE_PMA_WIRELESS &&
 		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK &&
-		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA &&
-		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_STAND &&
-		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_HV_STAND)
+		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA)
 		max77854_check_slow_charging(charger, charger->input_current);
 
 	max77854_update_reg(charger->i2c,
@@ -1664,9 +1634,7 @@ static void max77854_chgin_isr_work(struct work_struct *work)
 							charger->cable_type != POWER_SUPPLY_TYPE_HV_WIRELESS &&
 							charger->cable_type != POWER_SUPPLY_TYPE_PMA_WIRELESS &&
 							charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK &&
-							charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA &&
-							charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_STAND &&
-							charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_HV_STAND)) {
+							charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA)) {
 					pr_info("%s, vbus_state : 0x%d, chg_state : 0x%d\n", __func__, chgin_dtls, chg_dtls);
 					pr_info("%s: vBus is undervoltage\n", __func__);
 					value.intval = POWER_SUPPLY_HEALTH_UNDERVOLTAGE;
@@ -1747,9 +1715,7 @@ static void max77854_wc_current_work(struct work_struct *work)
 		charger->cable_type != POWER_SUPPLY_TYPE_HV_WIRELESS &&
 		charger->cable_type != POWER_SUPPLY_TYPE_PMA_WIRELESS &&
 		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK &&
-		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA &&
-		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_STAND &&
-		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+		charger->cable_type != POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 		charger->wc_pre_current = WC_CURRENT_START;
 		max77854_write_reg(charger->i2c,
 			MAX77854_CHG_REG_CNFG_10, 0x10);
@@ -1765,15 +1731,13 @@ static void max77854_wc_current_work(struct work_struct *work)
 		msleep(500);
 		if (charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS ||
 			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK ||
-			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA ||
-			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_STAND) {
+			charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_PACK_TA) {
 			psy_do_property("battery", get, POWER_SUPPLY_PROP_CAPACITY, value);
 			if (value.intval < charger->pdata->wireless_cc_cv)
 				value.intval = WIRELESS_VRECT_ADJ_ROOM_4; /* WPC 4.5W, Vrect Room 30mV */
 			else 
 				value.intval = WIRELESS_VRECT_ADJ_ROOM_5; /* WPC 4.5W, Vrect Room 80mV */
-		} else if (charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS ||
-				   charger->cable_type == POWER_SUPPLY_TYPE_WIRELESS_HV_STAND) {
+		} else if (charger->cable_type == POWER_SUPPLY_TYPE_HV_WIRELESS) {
 			value.intval = WIRELESS_VRECT_ADJ_ROOM_5; /* WPC 9W, Vrect Room 80mV */
 		} else
 			value.intval = WIRELESS_VRECT_ADJ_OFF; /* PMA 4.5W, Vrect Room 0mV */

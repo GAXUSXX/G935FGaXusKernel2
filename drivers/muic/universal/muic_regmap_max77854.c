@@ -151,7 +151,6 @@ enum max77854_muic_reg_item {
 	CDETCTRL2_DxOVPEN	=  REG_ITEM(REG_CDETCTRL2, _BIT3, _MASK1),
 	CDETCTRL2_FrcChg	=  REG_ITEM(REG_CDETCTRL2, _BIT0, _MASK1),
 
-	CONTROL1_NoBCComp	=  REG_ITEM(REG_CONTROL1, _BIT6, _MASK1),
 	CONTROL1_COMP2Sw	=  REG_ITEM(REG_CONTROL1, _BIT3, _MASK3),
 	CONTROL1_COMN1Sw	=  REG_ITEM(REG_CONTROL1, _BIT0, _MASK3),
 
@@ -499,30 +498,17 @@ static void max77854_set_adc_scan_mode(struct regmap_desc *pdesc,
 
 }
 
-enum switching_mode_val{
-	_SWMODE_AUTO = 0,
-	_SWMODE_MANUAL = 1,
-};
-
 static int max77854_get_switching_mode(struct regmap_desc *pdesc)
 {
-	return SWMODE_AUTO;
-}
+	int mode = 0;
 
+	pr_warn("%s: Not implemented.\n", __func__);
+	return mode;
+}
 static void max77854_set_switching_mode(struct regmap_desc *pdesc, int mode)
 {
-        int attr, value;
-	int ret = 0;
-
-	pr_info("%s\n",__func__);
-
-	value = (mode == SWMODE_AUTO) ? _SWMODE_AUTO : _SWMODE_MANUAL;
-	attr = CONTROL1_NoBCComp;
-	ret = regmap_write_value(pdesc, attr, value);
-	if (ret < 0)
-		pr_err("%s REG_CTRL write fail.\n", __func__);
-	else
-		_REGMAP_TRACE(pdesc, 'w', ret, attr, value);
+	pr_warn("%s: Not implemented.\n", __func__);
+	return;
 }
 
 static void max77854_get_fromatted_dump(struct regmap_desc *pdesc, char *mesg)

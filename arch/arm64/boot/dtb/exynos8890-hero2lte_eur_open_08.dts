@@ -1958,7 +1958,7 @@
 
   cl0_idx_num = <19>;
   cl0_max_support_idx = <4>;
-  cl0_min_support_idx = <15>;
+  cl0_min_support_idx = <18>;
   cl0_boot_max_qos = <1586000>;
   cl0_boot_min_qos = <1586000>;
   cl0_en_ema = <1>;
@@ -2000,10 +2000,10 @@
       12 754000 781250 676000
       13 650000 750000 546000
       14 546000 718750 421000
-      15 442000 681250 0
-      16 338000 650000 0
-      17 234000 643750 0
-      18 130000 643750 0 >;
+      15 442000 681250 391000
+      16 338000 650000 321000
+      17 234000 643750 221000
+      18 130000 643750 121000 >;
 
 
   cl1_dvfs_domain_name = "dvfs_big";
@@ -3417,7 +3417,7 @@
   ip_ver = <14>;
   clock_rate = <400000000>;
   min_rate = <100000>;
-  num_qos_steps = <12>;
+  num_qos_steps = <9>;
   mfc_qos_table {
    mfc_qos_variant_0 {
     thrd_mb = <0>;
@@ -3429,33 +3429,6 @@
     has_enc_table = <0>;
    };
    mfc_qos_variant_1 {
-    thrd_mb = <108000>;
-    freq_mfc = <168000>;
-    freq_int = <127000>;
-    freq_mif = <286000>;
-    freq_cpu = <0>;
-    freq_kfc = <0>;
-    has_enc_table = <0>;
-   };
-   mfc_qos_variant_2 {
-    thrd_mb = <108000>;
-    freq_mfc = <168000>;
-    freq_int = <127000>;
-    freq_mif = <286000>;
-    freq_cpu = <0>;
-    freq_kfc = <0>;
-    has_enc_table = <1>;
-   };
-   mfc_qos_variant_3 {
-    thrd_mb = <244800>;
-    freq_mfc = <168000>;
-    freq_int = <127000>;
-    freq_mif = <286000>;
-    freq_cpu = <0>;
-    freq_kfc = <0>;
-    has_enc_table = <0>;
-   };
-   mfc_qos_variant_4 {
     thrd_mb = <489600>;
     freq_mfc = <264000>;
     freq_int = <200000>;
@@ -3464,7 +3437,7 @@
     freq_kfc = <0>;
     has_enc_table = <0>;
    };
-   mfc_qos_variant_5 {
+   mfc_qos_variant_2 {
     thrd_mb = <489600>;
     freq_mfc = <264000>;
     freq_int = <200000>;
@@ -3473,7 +3446,7 @@
     freq_kfc = <0>;
     has_enc_table = <1>;
    };
-   mfc_qos_variant_6 {
+   mfc_qos_variant_3 {
     thrd_mb = <979200>;
     freq_mfc = <400000>;
     freq_int = <336000>;
@@ -3482,7 +3455,7 @@
     freq_kfc = <0>;
     has_enc_table = <0>;
    };
-   mfc_qos_variant_7 {
+   mfc_qos_variant_4 {
     thrd_mb = <979200>;
     freq_mfc = <400000>;
     freq_int = <336000>;
@@ -3491,7 +3464,7 @@
     freq_kfc = <0>;
     has_enc_table = <1>;
    };
-   mfc_qos_variant_8 {
+   mfc_qos_variant_5 {
     thrd_mb = <1468800>;
     freq_mfc = <598000>;
     freq_int = <690000>;
@@ -3500,7 +3473,7 @@
     freq_kfc = <0>;
     has_enc_table = <0>;
    };
-   mfc_qos_variant_9 {
+   mfc_qos_variant_6 {
     thrd_mb = <1468800>;
     freq_mfc = <598000>;
     freq_int = <690000>;
@@ -3509,7 +3482,7 @@
     freq_kfc = <0>;
     has_enc_table = <1>;
    };
-   mfc_qos_variant_10 {
+   mfc_qos_variant_7 {
     thrd_mb = <1958400>;
     freq_mfc = <598000>;
     freq_int = <690000>;
@@ -3518,7 +3491,7 @@
     freq_kfc = <0>;
     has_enc_table = <0>;
    };
-   mfc_qos_variant_11 {
+   mfc_qos_variant_8 {
     thrd_mb = <1958400>;
     freq_mfc = <598000>;
     freq_int = <690000>;
@@ -4894,7 +4867,6 @@
   mif,irq_cp2ap_perf_req_mif = <6>;
   mif,irq_cp2ap_perf_req_int = <7>;
   mif,irq_cp2ap_wakelock = <8>;
-  mif,irq_cp2ap_pcie_l1ss_disable = <9>;
 
   mbx_ap2cp_msg = <0>;
   mbx_cp2ap_msg = <1>;
@@ -4912,7 +4884,6 @@
   mbx_ap2cp_mif_value = <13>;
   mbx_ap2cp_sec = <14>;
   mbx_ap2cp_usec = <15>;
-  mbx_cp2ap_pcie_l1ss_disable = <17>;
   mbx_ap2cp_et_dac_cal = <32>;
   mbx_ap2cp_info_value = <33>;
   mbx_ap2cp_lock_value = <39>;
@@ -6142,7 +6113,7 @@
 
     _ldo11_reg: s2mpb02-ldo11 {
      regulator-name = "VDDA_2.9V_CAM";
-     regulator-min-microvolt = <1000000>;
+     regulator-min-microvolt = <2800000>;
      regulator-max-microvolt = <2950000>;
     };
 
@@ -6757,7 +6728,7 @@
     "-Audiodock:64.9K",
     "-USB LANHUB:80.07K",
     "-Charging Cable:102K",
-    "+Game Pad:121K",
+    "-Universal Multimedia dock:121K",
     "+TYPE1 Charger:200K",
     "+Jig USB Off:255K",
     "+Jig USB On:301K",
@@ -7438,199 +7409,161 @@
     default_cam = <690000>;
     default_mif = <1794000>;
     default_i2c = <0>;
-    default_hpg = <1>;
 
     front_preview_int = <640000>;
     front_preview_cam = <640000>;
     front_preview_mif = <845000>;
     front_preview_i2c = <0>;
-    front_preview_hpg = <1>;
 
     front_capture_int = <690000>;
     front_capture_cam = <640000>;
     front_capture_mif = <1794000>;
     front_capture_i2c = <0>;
-    front_capture_hpg = <1>;
 
     front_video_int = <640000>;
     front_video_cam = <640000>;
     front_video_mif = <845000>;
     front_video_i2c = <0>;
-    front_video_hpg = <1>;
 
     front_video_whd_int = <640000>;
     front_video_whd_cam = <640000>;
     front_video_whd_mif = <845000>;
     front_video_whd_i2c = <0>;
-    front_video_whd_hpg = <1>;
 
     front_video_capture_int = <690000>;
     front_video_capture_cam = <640000>;
     front_video_capture_mif = <1794000>;
     front_video_capture_i2c = <0>;
-    front_video_capture_hpg = <1>;
 
     front_video_whd_capture_int = <690000>;
     front_video_whd_capture_cam = <640000>;
     front_video_whd_capture_mif = <1794000>;
     front_video_whd_capture_i2c = <0>;
-    front_video_whd_capture_hpg = <1>;
 
     front_no_preproc_int = <640000>;
     front_no_preproc_cam = <640000>;
     front_no_preproc_mif = <845000>;
     front_no_preproc_i2c = <0>;
-    front_no_preproc_hpg = <1>;
 
     front_vt1_int = <640000>;
     front_vt1_cam = <640000>;
     front_vt1_mif = <845000>;
     front_vt1_i2c = <0>;
-    front_vt1_hpg = <1>;
 
     front_vt2_int = <640000>;
     front_vt2_cam = <640000>;
     front_vt2_mif = <845000>;
     front_vt2_i2c = <0>;
-    front_vt2_hpg = <1>;
 
     front_vt4_int = <640000>;
     front_vt4_cam = <640000>;
     front_vt4_mif = <845000>;
     front_vt4_i2c = <0>;
-    front_vt4_hpg = <1>;
 
     rear_preview_fhd_int = <650000>;
     rear_preview_fhd_cam = <670000>;
     rear_preview_fhd_mif = <845000>;
     rear_preview_fhd_i2c = <0>;
-    rear_preview_fhd_hpg = <1>;
 
     rear_preview_whd_int = <660000>;
     rear_preview_whd_cam = <670000>;
     rear_preview_whd_mif = <1014000>;
     rear_preview_whd_i2c = <0>;
-    rear_preview_whd_hpg = <1>;
 
     rear_preview_uhd_int = <660000>;
     rear_preview_uhd_cam = <670000>;
     rear_preview_uhd_mif = <1352000>;
     rear_preview_uhd_i2c = <0>;
-    rear_preview_uhd_hpg = <1>;
 
     rear_preview_uhd_60fps_int = <680000>;
     rear_preview_uhd_60fps_cam = <680000>;
     rear_preview_uhd_60fps_mif = <1794000>;
     rear_preview_uhd_60fps_i2c = <0>;
-    rear_preview_uhd_60fps_hpg = <1>;
 
     rear_capture_int = <690000>;
     rear_capture_cam = <670000>;
     rear_capture_mif = <1794000>;
     rear_capture_i2c = <0>;
-    rear_capture_hpg = <1>;
 
     rear_video_fhd_int = <650000>;
     rear_video_fhd_cam = <670000>;
     rear_video_fhd_mif = <845000>;
     rear_video_fhd_i2c = <0>;
-    rear_video_fhd_hpg = <1>;
 
     rear_video_whd_int = <660000>;
     rear_video_whd_cam = <670000>;
     rear_video_whd_mif = <1014000>;
     rear_video_whd_i2c = <0>;
-    rear_video_whd_hpg = <1>;
 
     rear_video_uhd_int = <660000>;
     rear_video_uhd_cam = <670000>;
     rear_video_uhd_mif = <1352000>;
     rear_video_uhd_i2c = <0>;
-    rear_video_uhd_hpg = <1>;
 
     rear_video_uhd_60fps_int = <680000>;
     rear_video_uhd_60fps_cam = <680000>;
     rear_video_uhd_60fps_mif = <1794000>;
     rear_video_uhd_60fps_i2c = <0>;
-    rear_video_uhd_60fps_hpg = <1>;
 
     rear_video_fhd_capture_int = <690000>;
     rear_video_fhd_capture_cam = <670000>;
     rear_video_fhd_capture_mif = <1794000>;
     rear_video_fhd_capture_i2c = <0>;
-    rear_video_fhd_capture_hpg = <1>;
 
     rear_video_whd_capture_int = <690000>;
     rear_video_whd_capture_cam = <670000>;
     rear_video_whd_capture_mif = <1794000>;
     rear_video_whd_capture_i2c = <0>;
-    rear_video_whd_capture_hpg = <1>;
 
     rear_video_uhd_capture_int = <690000>;
     rear_video_uhd_capture_cam = <670000>;
     rear_video_uhd_capture_mif = <1794000>;
     rear_video_uhd_capture_i2c = <0>;
-    rear_video_uhd_capture_hpg = <1>;
 
     dual_preview_int = <630000>;
     dual_preview_cam = <670000>;
     dual_preview_mif = <845000>;
     dual_preview_i2c = <0>;
-    dual_preview_hpg = <1>;
 
     dual_capture_int = <690000>;
     dual_capture_cam = <670000>;
     dual_capture_mif = <1794000>;
     dual_capture_i2c = <0>;
-    dual_capture_hpg = <1>;
 
     dual_video_int = <630000>;
     dual_video_cam = <670000>;
     dual_video_mif = <845000>;
     dual_video_i2c = <0>;
-    dual_video_hpg = <1>;
 
     dual_video_capture_int = <690000>;
     dual_video_capture_cam = <670000>;
     dual_video_capture_mif = <1794000>;
     dual_video_capture_i2c = <0>;
-    dual_video_capture_hpg = <1>;
 
     preview_high_speed_fps_int = <670000>;
     preview_high_speed_fps_cam = <680000>;
     preview_high_speed_fps_mif = <1014000>;
     preview_high_speed_fps_i2c = <0>;
-    preview_high_speed_fps_hpg = <1>;
-
-    video_high_speed_60fps_swvdis_int = <650000>;
-    video_high_speed_60fps_swvdis_cam = <680000>;
-    video_high_speed_60fps_swvdis_mif = <1014000>;
-    video_high_speed_60fps_swvdis_i2c = <0>;
-    video_high_speed_60fps_swvdis_hpg = <1>;
 
     video_high_speed_60fps_int = <650000>;
     video_high_speed_60fps_cam = <680000>;
     video_high_speed_60fps_mif = <1014000>;
     video_high_speed_60fps_i2c = <0>;
-    video_high_speed_60fps_hpg = <1>;
 
     video_high_speed_120fps_int = <670000>;
     video_high_speed_120fps_cam = <680000>;
     video_high_speed_120fps_mif = <1014000>;
     video_high_speed_120fps_i2c = <0>;
-    video_high_speed_120fps_hpg = <1>;
 
     video_high_speed_240fps_int = <680000>;
     video_high_speed_240fps_cam = <680000>;
     video_high_speed_240fps_mif = <1539000>;
     video_high_speed_240fps_i2c = <0>;
-    video_high_speed_240fps_hpg = <1>;
 
     max_int = <690000>;
     max_cam = <690000>;
     max_mif = <1794000>;
     max_i2c = <0>;
-    max_hpg = <1>;
    };
 
    table1 {
@@ -7640,199 +7573,161 @@
     default_cam = <690000>;
     default_mif = <1794000>;
     default_i2c = <0>;
-    default_hpg = <1>;
 
     front_preview_int = <650000>;
     front_preview_cam = <640000>;
     front_preview_mif = <845000>;
     front_preview_i2c = <0>;
-    front_preview_hpg = <1>;
 
     front_capture_int = <690000>;
     front_capture_cam = <640000>;
     front_capture_mif = <1794000>;
     front_capture_i2c = <0>;
-    front_capture_hpg = <1>;
 
     front_video_int = <650000>;
     front_video_cam = <640000>;
     front_video_mif = <845000>;
     front_video_i2c = <0>;
-    front_video_hpg = <1>;
 
     front_video_whd_int = <650000>;
     front_video_whd_cam = <640000>;
     front_video_whd_mif = <845000>;
     front_video_whd_i2c = <0>;
-    front_video_whd_hpg = <1>;
 
     front_video_capture_int = <690000>;
     front_video_capture_cam = <640000>;
     front_video_capture_mif = <1794000>;
     front_video_capture_i2c = <0>;
-    front_video_capture_hpg = <1>;
 
     front_video_whd_capture_int = <690000>;
     front_video_whd_capture_cam = <640000>;
     front_video_whd_capture_mif = <1794000>;
     front_video_whd_capture_i2c = <0>;
-    front_video_whd_capture_hpg = <1>;
 
     front_no_preproc_int = <640000>;
     front_no_preproc_cam = <640000>;
     front_no_preproc_mif = <845000>;
     front_no_preproc_i2c = <0>;
-    front_no_preproc_hpg = <1>;
 
     front_vt1_int = <650000>;
     front_vt1_cam = <640000>;
     front_vt1_mif = <845000>;
     front_vt1_i2c = <0>;
-    front_vt1_hpg = <1>;
 
     front_vt2_int = <650000>;
     front_vt2_cam = <640000>;
     front_vt2_mif = <845000>;
     front_vt2_i2c = <0>;
-    front_vt2_hpg = <1>;
 
     front_vt4_int = <650000>;
     front_vt4_cam = <640000>;
     front_vt4_mif = <845000>;
     front_vt4_i2c = <0>;
-    front_vt4_hpg = <1>;
 
     rear_preview_fhd_int = <670000>;
     rear_preview_fhd_cam = <670000>;
     rear_preview_fhd_mif = <1539000>;
     rear_preview_fhd_i2c = <0>;
-    rear_preview_fhd_hpg = <1>;
 
     rear_preview_whd_int = <670000>;
     rear_preview_whd_cam = <670000>;
     rear_preview_whd_mif = <1539000>;
     rear_preview_whd_i2c = <0>;
-    rear_preview_whd_hpg = <1>;
 
     rear_preview_uhd_int = <670000>;
     rear_preview_uhd_cam = <670000>;
     rear_preview_uhd_mif = <1539000>;
     rear_preview_uhd_i2c = <0>;
-    rear_preview_uhd_hpg = <1>;
 
     rear_preview_uhd_60fps_int = <680000>;
     rear_preview_uhd_60fps_cam = <680000>;
     rear_preview_uhd_60fps_mif = <1794000>;
     rear_preview_uhd_60fps_i2c = <0>;
-    rear_preview_uhd_60fps_hpg = <1>;
 
     rear_capture_int = <670000>;
     rear_capture_cam = <670000>;
     rear_capture_mif = <1794000>;
     rear_capture_i2c = <0>;
-    rear_capture_hpg = <1>;
 
     rear_video_fhd_int = <670000>;
     rear_video_fhd_cam = <670000>;
     rear_video_fhd_mif = <1539000>;
     rear_video_fhd_i2c = <0>;
-    rear_video_fhd_hpg = <1>;
 
     rear_video_whd_int = <670000>;
     rear_video_whd_cam = <670000>;
     rear_video_whd_mif = <1014000>;
     rear_video_whd_i2c = <0>;
-    rear_video_whd_hpg = <1>;
 
     rear_video_uhd_int = <670000>;
     rear_video_uhd_cam = <670000>;
     rear_video_uhd_mif = <1352000>;
     rear_video_uhd_i2c = <0>;
-    rear_video_uhd_hpg = <1>;
 
     rear_video_uhd_60fps_int = <680000>;
     rear_video_uhd_60fps_cam = <680000>;
     rear_video_uhd_60fps_mif = <1794000>;
     rear_video_uhd_60fps_i2c = <0>;
-    rear_video_uhd_60fps_hpg = <1>;
 
     rear_video_fhd_capture_int = <670000>;
     rear_video_fhd_capture_cam = <670000>;
     rear_video_fhd_capture_mif = <1794000>;
     rear_video_fhd_capture_i2c = <0>;
-    rear_video_fhd_capture_hpg = <1>;
 
     rear_video_whd_capture_int = <670000>;
     rear_video_whd_capture_cam = <670000>;
     rear_video_whd_capture_mif = <1794000>;
     rear_video_whd_capture_i2c = <0>;
-    rear_video_whd_capture_hpg = <1>;
 
     rear_video_uhd_capture_int = <670000>;
     rear_video_uhd_capture_cam = <670000>;
     rear_video_uhd_capture_mif = <1794000>;
     rear_video_uhd_capture_i2c = <0>;
-    rear_video_uhd_capture_hpg = <1>;
 
     dual_preview_int = <690000>;
     dual_preview_cam = <670000>;
     dual_preview_mif = <1352000>;
     dual_preview_i2c = <0>;
-    dual_preview_hpg = <1>;
 
     dual_capture_int = <690000>;
     dual_capture_cam = <670000>;
     dual_capture_mif = <1794000>;
     dual_capture_i2c = <0>;
-    dual_capture_hpg = <1>;
 
     dual_video_int = <690000>;
     dual_video_cam = <670000>;
     dual_video_mif = <1352000>;
     dual_video_i2c = <0>;
-    dual_video_hpg = <1>;
 
     dual_video_capture_int = <690000>;
     dual_video_capture_cam = <670000>;
     dual_video_capture_mif = <1794000>;
     dual_video_capture_i2c = <0>;
-    dual_video_capture_hpg = <1>;
 
     preview_high_speed_fps_int = <670000>;
     preview_high_speed_fps_cam = <680000>;
     preview_high_speed_fps_mif = <1014000>;
     preview_high_speed_fps_i2c = <0>;
-    preview_high_speed_fps_hpg = <1>;
-
-    video_high_speed_60fps_swvdis_int = <680000>;
-    video_high_speed_60fps_swvdis_cam = <680000>;
-    video_high_speed_60fps_swvdis_mif = <1014000>;
-    video_high_speed_60fps_swvdis_i2c = <0>;
-    video_high_speed_60fps_swvdis_hpg = <1>;
 
     video_high_speed_60fps_int = <680000>;
     video_high_speed_60fps_cam = <680000>;
     video_high_speed_60fps_mif = <1014000>;
     video_high_speed_60fps_i2c = <0>;
-    video_high_speed_60fps_hpg = <1>;
 
     video_high_speed_120fps_int = <670000>;
     video_high_speed_120fps_cam = <680000>;
     video_high_speed_120fps_mif = <1014000>;
     video_high_speed_120fps_i2c = <0>;
-    video_high_speed_120fps_hpg = <1>;
 
     video_high_speed_240fps_int = <680000>;
     video_high_speed_240fps_cam = <680000>;
     video_high_speed_240fps_mif = <1539000>;
     video_high_speed_240fps_i2c = <0>;
-    video_high_speed_240fps_hpg = <1>;
 
     max_int = <690000>;
     max_cam = <690000>;
     max_mif = <1794000>;
     max_i2c = <0>;
-    max_hpg = <1>;
    };
   };
  };
@@ -8160,7 +8055,7 @@
  argos {
   compatible = "samsung,argos";
   #address-cells = <1>;
-# 2970 "/home/gaxus/galaxys7/newGaXusKernel2/arch/arm64/boot/dts/exynos8890-herolte_common.dtsi"
+# 2894 "/home/gaxus/galaxys7/newGaXusKernel2/arch/arm64/boot/dts/exynos8890-herolte_common.dtsi"
   boot_device@1 {
    net_boost,label="IPC";
    net_boost,node="rmnet0 rmnet1 rmnet2 rmnet3 rmnet4 rmnet5 rmnet6 rmnet7 umts_dm0";
@@ -8168,10 +8063,10 @@
    net_boost,table= <
     100 0 0 1066000 0 845000 0 0 1 0
     200 0 0 1274000 0 1014000 0 0 1 0
-    300 0 0 1586000 0 1794000 0 0 1 0
+    400 0 0 1586000 0 1794000 0 0 1 0
     >;
   };
-# 2989 "/home/gaxus/galaxys7/newGaXusKernel2/arch/arm64/boot/dts/exynos8890-herolte_common.dtsi"
+# 2913 "/home/gaxus/galaxys7/newGaXusKernel2/arch/arm64/boot/dts/exynos8890-herolte_common.dtsi"
   boot_device@2 {
    net_boost,label="UFS";
    net_boost,node="";
@@ -8192,12 +8087,11 @@
   boot_device@4 {
    net_boost,label="WIFI";
    net_boost,node="wlan0";
-   net_boost,table_size = <4>;
+   net_boost,table_size = <3>;
    net_boost,table= <
     20 1040000 0 858000 0 0 0 0 0 0
     60 1456000 0 1170000 0 0 0 0 0 0
-    180 2080000 0 1586000 0 845000 400000 1 1 1
-    300 2288000 0 1586000 0 845000 400000 1 1 1
+    180 2288000 0 1586000 0 845000 400000 1 1 1
     >;
   };
   boot_device@5 {
@@ -8213,12 +8107,11 @@
   boot_device@6 {
    net_boost,label="CLAT";
    net_boost,node="clat clat4 v4-rmnet0 v4-rmnet1 v4-rmnet2 v4-rmnet3 v4-rmnet4 v4-rmnet5 v4-rmnet6 v4-rmnet7";
-   net_boost,table_size = <4>;
+   net_boost,table_size = <3>;
    net_boost,table= <
     120 1456000 0 0 0 845000 0 0 0 0
     130 1560000 0 0 0 845000 0 0 0 0
     150 1664000 0 0 0 845000 0 0 0 0
-    200 1664000 0 1586000 0 1794000 0 0 0 0
     >;
   };
 
@@ -8747,10 +8640,10 @@
   battery,wpc_temp_table_data = <800 750 700 650 600 570 550 530 500 470 450 430 400 370 350
       330 300 270 250 200 150 100 50 30 0 (-30) (-50) (-70) (-100) (-150) (-200)>;
 
-  battery,input_current_limit = <1800 450 450 1800 500 900 1000 460 1000 450 900 900 900 1900 1800 450 450 400 700 1300 300 1000 1500 450 1675 1800 1000 1675 80 1800 1675 1400 1000 1000 600 900 900 900>;
-  battery,fast_charging_current = <2100 450 450 2100 800 1200 1000 460 1200 450 2100 2100 2100 1600 2100 450 450 400 700 1300 300 1000 1500 450 2800 2800 1000 2800 80 1800 1000 1400 450 1000 2100 2100 2100 2100>;
-  battery,full_check_current_1st = <350 0 0 350 350 350 350 350 350 0 350 350 350 350 350 0 0 350 350 350 350 350 350 0 350 350 350 350 0 350 350 350 0 350 350 350 350 350>;
-  battery,full_check_current_2nd = <150 0 0 150 150 150 150 150 150 0 150 150 150 150 150 0 0 150 150 150 150 150 150 0 150 150 150 150 0 150 150 150 0 150 150 150 150 150>;
+  battery,input_current_limit = <1800 450 450 1800 500 900 1000 460 1000 450 900 1000 900 1900 1800 450 450 400 700 1300 300 1000 1500 450 1675 1800 1000 1675 80 1800 1675 1400 1000 1000 600 900>;
+  battery,fast_charging_current = <2100 450 450 2100 800 1200 1000 460 1200 450 2100 2100 2100 1600 2100 450 450 400 700 1300 300 1000 1500 450 2800 2800 1000 2800 80 1800 1000 1400 450 1000 2100 2100>;
+  battery,full_check_current_1st = <350 0 0 350 350 350 350 350 350 0 350 350 350 350 350 0 0 350 350 350 350 350 350 0 350 350 350 350 0 350 350 350 0 350 350 350>;
+  battery,full_check_current_2nd = <150 0 0 150 150 150 150 150 150 0 150 150 150 150 150 0 0 150 150 150 150 150 150 0 150 150 150 150 0 150 150 150 0 150 150 150>;
 
   battery,wireless_cc_cv = <85>;
   battery,inbat_voltage = <1>;
@@ -9503,12 +9396,6 @@
   br_ratio_r_sv = <320>;
   br_ratio_g_sv = <120>;
   br_ratio_b_sv = <340>;
-
-  normal_powermode_current_pg = <10>;
-  low_powermode_current_pg = <2>;
-  br_ratio_r_pg = <250>;
-  br_ratio_g_pg = <120>;
-  br_ratio_b_pg = <500>;
  };
 };
 # 22 "/home/gaxus/galaxys7/newGaXusKernel2/arch/arm64/boot/dts/exynos8890-hero2lte_eur_open_08.dts" 2
