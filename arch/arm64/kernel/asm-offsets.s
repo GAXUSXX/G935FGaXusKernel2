@@ -17,10 +17,11 @@
 // -mbionic -mlittle-endian -mgeneral-regs-only -mabi=lp64
 // -auxbase-strip arch/arm64/kernel/asm-offsets.s -O2 -Wall -Wundef
 // -Wstrict-prototypes -Wno-trigraphs -Werror=implicit-function-declaration
-// -Wno-format-security -Werror -Wframe-larger-than=2048
-// -Wno-unused-but-set-variable -Wdeclaration-after-statement
-// -Wno-pointer-sign -Werror=implicit-int -Werror=strict-prototypes
-// -Werror=date-time -std=gnu90 -fno-strict-aliasing -fno-common -fno-pic
+// -Wno-format-security -Werror -Wno-maybe-uninitialized
+// -Wframe-larger-than=2048 -Wno-unused-but-set-variable
+// -Wdeclaration-after-statement -Wno-pointer-sign -Werror=implicit-int
+// -Werror=strict-prototypes -Werror=date-time -std=gnu90
+// -fno-strict-aliasing -fno-common -fno-pic
 // -fno-delete-null-pointer-checks -fno-stack-protector
 // -fno-omit-frame-pointer -fno-optimize-sibling-calls
 // -fno-var-tracking-assignments -fno-strict-overflow -fconserve-stack

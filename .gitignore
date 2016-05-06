@@ -14,3 +14,7 @@ System.map
 build
 ./arch/arm64/dtb
 ./arch/arm64/Image.gz
+**~
+**/**.order
+**/**/**/**.o
+.config.old

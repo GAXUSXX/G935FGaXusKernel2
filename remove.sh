@@ -14,3 +14,6 @@ git rm --cached .tmp_versions
 git rm --cached build
 git rm --cached ./arch/arm64/dtb
 git rm --cached ./arch/arm64/Image.gz
+git rm --cached **/**.order
+git rm --cached **/**/**/**.o
+git rm --cached .config.old
