@@ -20,3 +20,4 @@ build
 **/**/**/**/**.o
 .config.old
 **.order
+*.o
