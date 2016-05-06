@@ -17,3 +17,4 @@ git rm --cached ./arch/arm64/Image.gz
 git rm --cached **/**.order
 git rm --cached **/**/**/**.o
 git rm --cached .config.old
+git rm --cached **/**/**/**/**.o
