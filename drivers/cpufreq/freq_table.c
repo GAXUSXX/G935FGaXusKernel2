@@ -216,7 +216,7 @@ EXPORT_SYMBOL_GPL(cpufreq_frequency_table_get_index);
 /**
  * show_available_freqs - show available frequencies for the specified CPU
  */
-static ssize_t show_available_freqs(struct cpufreq_policy *policy, char *buf,
+ssize_t show_available_freqs(struct cpufreq_policy *policy, char *buf,
 				    bool show_boost)
 {
 	ssize_t count = 0;
