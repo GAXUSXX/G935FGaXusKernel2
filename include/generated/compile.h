@@ -1,7 +1,7 @@
-/* This file is auto generated, version 27 */
+/* This file is auto generated, version 28 */
 /* SMP PREEMPT */
 #define UTS_MACHINE "arm64"
-#define UTS_VERSION "#27 SMP PREEMPT Fri May 13 22:18:00 JST 2016"
+#define UTS_VERSION "#28 SMP PREEMPT Fri May 13 22:42:56 JST 2016"
 #define LINUX_COMPILE_BY "root"
 #define LINUX_COMPILE_HOST "gaxus-VirtualBox"
 #define LINUX_COMPILER "gcc version 4.9.x-google 20150123 (prerelease) (GCC) "
