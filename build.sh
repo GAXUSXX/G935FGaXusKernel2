@@ -28,6 +28,8 @@ VER=$(cat $RDIR/VERSION)
 
 # directory containing cross-compile arm64 toolchain
 TOOLCHAIN=/home/gaxus/nexus5/toolchain64/bin/aarch64-linux-android-
+#TOOLCHAIN=/home/gaxus/galaxys7/extToolchain/bin/aarch64-unknown-linux-gnueabi-
+
 
 # amount of cpu threads to use in kernel make process
 THREADS=8
@@ -35,7 +37,7 @@ THREADS=8
 ############## SCARY NO-TOUCHY STUFF ###############
 
 export ARCH=arm64
-export CROSS_COMPILE=/home/gaxus/nexus5/toolchain64/bin/aarch64-linux-android-
+export CROSS_COMPILE=$TOOLCHAIN
 
 [ "$DEVICE" ] || DEVICE=hero2lte
 [ "$TARGET" ] || TARGET=GaXusKernel
