@@ -113,6 +113,12 @@ static int __init read_s2w_cmdline(char *s2w)
 }
 __setup("s2w=", read_s2w_cmdline);
 
+extern void sweep2wake_setdev(struct input_dev * input_device) {
+	sweep2wake_pwrdev = input_device;
+	return;
+}
+EXPORT_SYMBOL(sweep2wake_setdev);
+
 /* PowerKey work func */
 static void sweep2wake_presspwr(struct work_struct *sweep2wake_presspwr_work) {
 	if (!mutex_trylock(&pwrkeyworklock))

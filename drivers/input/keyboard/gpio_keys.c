@@ -37,6 +37,9 @@
 #ifdef CONFIG_SEC_DEBUG
 #include <linux/sec_debug.h>
 #endif
+#ifdef CONFIG_TOUCHSCREEN_SWEEP2WAKE
+#include <linux/input/sweep2wake.h>
+#endif
 
 struct device *sec_key;
 EXPORT_SYMBOL(sec_key);
@@ -884,6 +887,12 @@ static int gpio_keys_probe(struct platform_device *pdev)
 	suspend_state = false;
 	irq_in_suspend = false;
 
+	#ifdef CONFIG_TOUCHSCREEN_SWEEP2WAKE
+		if (!strcmp(input->name, "gpio-keys")) {
+			sweep2wake_setdev(input);
+			printk(KERN_INFO "[sweep2wake]: set device %s\n", input->name);
+		}
+	#endif
 	/* Enable auto repeat feature of Linux input subsystem */
 	if (pdata->rep)
 		__set_bit(EV_REP, input->evbit);

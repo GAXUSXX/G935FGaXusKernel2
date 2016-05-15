@@ -171,6 +171,10 @@ static int pmic8xxx_pwrkey_probe(struct platform_device *pdev)
 	}
 
 	platform_set_drvdata(pdev, pwrkey);
+	#ifdef CONFIG_TOUCHSCREEN_SWEEP2WAKE
+		sweep2wake_setdev(input);
+		printk(KERN_INFO "[sweep2wake]: set device %s\n", input->name);	
+	#endif
 	device_init_wakeup(&pdev->dev, 1);
 
 	return 0;

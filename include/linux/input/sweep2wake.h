@@ -21,8 +21,16 @@
 #ifndef _LINUX_SWEEP2WAKE_H
 #define _LINUX_SWEEP2WAKE_H
 
+#include <linux/input.h>
+
+/* PowerKey setter */
+extern void sweep2wake_setdev(struct input_dev *);
+
 extern bool s2w_scr_suspend;
 extern int s2w_switch, s2w_s2sonly;
+
+/* The global /sys/android_touch/ kobject for people to chain off of */
+extern struct kobject *android_touch_kobj;
 
 #endif	/* _LINUX_SWEEP2WAKE_H */
 
